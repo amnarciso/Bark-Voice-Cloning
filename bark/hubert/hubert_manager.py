@@ -33,12 +33,18 @@ class HuBERTManager:
             if tokenizer_lang == 'en':
                 repo = 'GitMylo/bark-voice-cloning'
                 model = 'quantifier_hubert_base_ls960_14.pth'
+            elif tokenizer_lang == 'es':
+                repo = 'Lancer1408/bark-es-tokenizer'
+                model = 'es_tokenizer.pth'
             elif tokenizer_lang == 'de':
                 repo = 'CountFloyd/bark-voice-cloning-german-HuBERT-quantizer'
                 model = 'german-HuBERT-quantizer_14_epoch.pth'
             elif tokenizer_lang == 'pl':
                 repo = 'Hobis/bark-voice-cloning-polish-HuBERT-quantizer'
                 model = 'polish-HuBERT-quantizer_8_epoch.pth'
+            elif tokenizer_lang == 'pt':
+                repo = 'MadVoyager/bark-voice-cloning-portuguese-HuBERT-quantizer'
+                model = 'portuguese-HuBERT-quantizer_24_epoch.pth'
             else:
                 raise 'Unknown Tokenizer Language!'
             print(f'{local_file} not found. Downloading HuBERT custom tokenizer')

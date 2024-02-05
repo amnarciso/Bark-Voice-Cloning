@@ -256,7 +256,7 @@ print("Preloading Models\n")
 preload_models()
 
 available_themes = ["Default", "gradio/glass", "gradio/monochrome", "gradio/seafoam", "gradio/soft", "gstaff/xkcd", "freddyaboulton/dracula_revamped", "ysharma/steampunk"]
-tokenizer_language_list = ["de","en", "pl"]
+tokenizer_language_list = ["de","en", "pl", "pt"]
 prepare_training_list = ["Step 1: Semantics from Text","Step 2: WAV from Semantics"]
 
 seed = -1
@@ -308,7 +308,7 @@ while run_server:
                     initialname = "/content/Bark-Voice-Cloning/bark/assets/prompts/file"
                     output_voice = gr.Textbox(label="Filename of trained Voice (do not change the initial name)", lines=1, placeholder=initialname, value=initialname, visible=False)
                 with gr.Column():
-                    tokenizerlang = gr.Dropdown(tokenizer_language_list, label="Base Language Tokenizer", value=tokenizer_language_list[1], visible=False)
+                    tokenizerlang = gr.Dropdown(tokenizer_language_list, label="Base Language Tokenizer", value=tokenizer_language_list[1])
             with gr.Row():
                 clone_voice_button = gr.Button("Create Voice", variant="primary")
             with gr.Row():
@@ -376,7 +376,7 @@ while run_server:
 
 
         swap_voice_button.click(swap_voice_from_audio, inputs=[swap_audio_filename, speaker_swap, swap_tokenizer_lang, swap_seed, swap_batchcount], outputs=output_swap)
-        clone_voice_button.click(clone_voice, inputs=[input_audio_filename, output_voice], outputs=[dummy, npz_file])
+        clone_voice_button.click(clone_voice, inputs=[input_audio_filename, tokenizerlang, output_voice], outputs=[dummy, npz_file])
 
 
         restart_server = False
